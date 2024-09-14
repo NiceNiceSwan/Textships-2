@@ -35,7 +35,8 @@
 *.txt
 *.json
 
+#compressed files
+*.zip
+
 # folders
 .vscode/
-.Textships/
-.Textships_2/
