@@ -11,6 +11,9 @@ const short int LEFT_INFO_PANEL_VERTICAL_LINE_ID = 19;
 const short int RIGHT_INFO_PANEL_VERTICAL_LINE_ID = 70;
 const short int MAP_SIZE_X = 50;
 const short int MAP_SIZE_Y = 50;
+const short int TEAM_1 = 0;
+const short int TEAM_2 = 1;
+const short int SHIPS_IN_TEAM = 5;
 
 int main()
 {

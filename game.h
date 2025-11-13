@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include <vector>
+#include <list>
 #include <random>
 #include "ship.h"
 #include "terminal_manager.h"
@@ -15,6 +16,9 @@ extern const short int LEFT_INFO_PANEL_VERTICAL_LINE_ID;
 extern const short int RIGHT_INFO_PANEL_VERTICAL_LINE_ID;
 extern const short int MAP_SIZE_X;
 extern const short int MAP_SIZE_Y;
+extern const short int TEAM_1;
+extern const short int TEAM_2;
+extern const short int SHIPS_IN_TEAM;
 
 class Game
 {
@@ -43,6 +47,7 @@ public:
     void refresh_ships();
     bool hit_a_ship(Ship* target_ship);
     void kill_a_ship(int team_of_dead_ship);
+    void generate_spawning_positions(std::uniform_int_distribution<int> spawning_positions, int ship_count, int team);
 };
 
 
