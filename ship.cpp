@@ -1,111 +1,104 @@
 #include "ship.h"
 
-void Ship::_destroyer()
+/**
+ * @brief sets the ship up as a destroyer
+ * 
+ * @param team team to which the ship belongs to
+ * @return Ship configured as a destroyer
+ */
+Ship Ship::Destroyer(int team)
 {
-    _name = "Destroyer";
-    _type = Ship_class::destroyer;
-    _hp = 10;
-    _attack = 4;
-    _defense = 1;
-    _range = 4;
-    _probable_detection_range = 10;
-    _certain_detection_range = 8;
-    _movement_range = 7;
-    _remaining_movement = _movement_range;
+    Ship new_ship(team);
+    new_ship._name = "Destroyer";
+    new_ship._type = Ship_class::destroyer;
+    new_ship._hp = 10;
+    new_ship._attack = 4;
+    new_ship._defense = 1;
+    new_ship._range = 4;
+    new_ship._probable_detection_range = 10;
+    new_ship._certain_detection_range = 8;
+    new_ship._movement_range = 7;
+    new_ship._remaining_movement = new_ship._movement_range;
+    new_ship._team = team;
+    return new_ship;
 }
 
-void Ship::_cruiser()
+/**
+ * @brief sets the ship up as a cruiser
+ * 
+ * @param team team to which the ship belongs to
+ * @return Ship configured as a cruiser
+ */
+Ship Ship::Cruiser(int team)
 {
-    _name = "Cruiser";
-    _type = Ship_class::cruiser;
-    _hp = 15;
-    _attack = 7;
-    _defense = 1;
-    _range = 8;
-    _probable_detection_range = 7;
-    _certain_detection_range = 5;
-    _movement_range = 5;
-    _remaining_movement = _movement_range;
+    Ship new_ship(team);
+    new_ship._name = "Cruiser";
+    new_ship._type = Ship_class::cruiser;
+    new_ship._hp = 15;
+    new_ship._attack = 7;
+    new_ship._defense = 1;
+    new_ship._range = 8;
+    new_ship._probable_detection_range = 7;
+    new_ship._certain_detection_range = 5;
+    new_ship._movement_range = 5;
+    new_ship._remaining_movement = new_ship._movement_range;
+    new_ship._team = team;
+    return new_ship;
 }
 
-void Ship::_battleship()
+/**
+ * @brief sets the ship up as a battleship
+ * 
+ * @param team team to which the ship belongs to
+ * @return Ship configured as a battleship
+ */
+Ship Ship::Battleship(int team)
 {
-    _name = "Battleship";
-    _type = Ship_class::battleship;
-    _hp = 25;
-    _attack = 12;
-    _defense = 1;
-    _range = 12;
-    _probable_detection_range = 5;
-    _certain_detection_range = 3;
-    _movement_range = 3;
-    _remaining_movement = _movement_range;
+    Ship new_ship(team);
+    new_ship._name = "Battleship";
+    new_ship._type = Ship_class::battleship;
+    new_ship._hp = 25;
+    new_ship._attack = 12;
+    new_ship._defense = 1;
+    new_ship._range = 12;
+    new_ship._probable_detection_range = 5;
+    new_ship._certain_detection_range = 3;
+    new_ship._movement_range = 3;
+    new_ship._remaining_movement = new_ship._movement_range;
+    new_ship._team = team;
+    return new_ship;
 }
 
-void Ship::_carrier()
+/// @brief not implemented right now
+/// @return a new ship configured as an aircraft carrier
+Ship Ship::Carrier(int team)
 {
-
+    Ship new_ship;
+    return new_ship;
 }
 
-void Ship::_submarine()
+/**
+ * @brief not implemented right now
+ * 
+ * @return Ship configured as a submarine
+ */
+Ship Ship::Submarine(int team)
 {
-
+    Ship new_ship;
+    return new_ship;
 }
 
 Ship::Ship()
 {
-    
+    _can_fire = true;
+    _visible = false;
 }
 
-void Ship::initialize(Ship_class ship_class)
-{
-    switch (ship_class)
-    {
-    case Ship_class::destroyer:
-        _destroyer();
-        break;
-    case Ship_class::cruiser:
-        _cruiser();
-        break;
-    case Ship_class::battleship:
-        _battleship();
-        break;
-    case Ship_class::carrier:
-        _carrier();
-        break;
-    case Ship_class::submarine:
-        _submarine();
-        break;
-    default:
-        break;
-    }
-}
-
-void Ship::initialize(Ship_class ship_class, int team)
+Ship::Ship(int team)
 {
     _can_fire = true;
     _team = team;
     _visible = false;
-    switch (ship_class)
-    {
-    case Ship_class::destroyer:
-        _destroyer();
-        break;
-    case Ship_class::cruiser:
-        _cruiser();
-        break;
-    case Ship_class::battleship:
-        _battleship();
-        break;
-    case Ship_class::carrier:
-        _carrier();
-        break;
-    case Ship_class::submarine:
-        _submarine();
-        break;
-    default:
-        break;
-    }
 }
 
 void Ship::refresh_data()

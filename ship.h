@@ -32,16 +32,15 @@ private:
     int _remaining_movement;
 
     Position _position;
-
-    void _destroyer();
-    void _cruiser();
-    void _battleship();
-    void _carrier();
-    void _submarine();
 public:
+    // Constructors
     Ship();
-    void initialize(Ship_class ship_class);
-    void initialize(Ship_class ship_class, int team);
+    Ship(int team);
+    static Ship Destroyer(int team);
+    static Ship Cruiser(int team);
+    static Ship Battleship(int team);
+    static Ship Carrier(int team);
+    static Ship Submarine(int team);
 
     // getters
     int team() { return _team; };
