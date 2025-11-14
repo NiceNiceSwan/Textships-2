@@ -19,11 +19,6 @@ Game::Game()
 
     // std::uniform_int_distribution<int> player_2_spawn_positions(40, 49);
 
-    // _ships[TEAM_1].resize(5);
-    // _ships[TEAM_2].resize(5);
-    generate_spawning_positions(player_1_spawn_positions, SHIPS_IN_TEAM, TEAM_1);
-    generate_spawning_positions(player_1_spawn_positions, SHIPS_IN_TEAM, TEAM_2);
-
     for (size_t i = 0; i < _ships.size(); i++)
     {
         _ships[i].push_back(Ship::Destroyer(i));
@@ -32,6 +27,8 @@ Game::Game()
         _ships[i].push_back(Ship::Cruiser(i));
         _ships[i].push_back(Ship::Battleship(i));
     }
+    generate_spawning_positions(player_1_spawn_positions, SHIPS_IN_TEAM, TEAM_1);
+    generate_spawning_positions(player_1_spawn_positions, SHIPS_IN_TEAM, TEAM_2);
     
 }
 
@@ -241,10 +238,9 @@ void Game::mark_visible_ships()
     for (size_t friendly_index = 0; friendly_index < _ships[_player].size(); friendly_index++)
     {
         // make our ships visible
-        Ship* friendly_ship = &(*friendly_ship);
+        Ship* friendly_ship = &_ships[_player][friendly_index];
         friendly_ship->visible(true);
 
-        std::list<Ship>::iterator enemy_ship;
         for (size_t enemy_index = 0; enemy_index < _ships[other_player].size(); enemy_index++)
         {
             Ship* enemy_ship = &_ships[other_player][enemy_index];
